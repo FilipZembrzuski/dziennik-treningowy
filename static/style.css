@@ -11,28 +11,37 @@ body, html{
     height:fit-content;
     padding-bottom: 30px;
     padding-top: 30px;
+    overflow: auto;
 }
 
-#menu_list{
+.menu_list{
     margin: 0;
+    margin-left: 10px;
     padding: 0;
-    width: fit-content;
-    height: 30px;
-    margin: auto;
+    width: auto;
+    float: left;
 }
-
-ul#menu_list > li.menu_item{
+.settings{
+    float: right;
+    margin-left: 0px;
+    margin-right: 10px;
+}
+ul.menu_list > li.menu_item{
     display: inline;
-    width: fit-content;
+    padding: 10px
 }
 a{
+    padding: 10px;
+    border-radius: 15px 10px 15px 10px;
     color: white;
     text-decoration: none;
-    min-width: 60px;
-    border: 1px rgb(255, 255, 255) solid;
-    border-radius: 15px 10px 15px 10px;
-    padding: 10px;
+    font-size: 20px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-family: Arial, Helvetica, sans-serif;
+    
 }
-li.menu_item > a:hover{
-    background-color: rgba(240, 248, 255, 0.1);
+
+li.nc > a{
+    position: relative;
 }
