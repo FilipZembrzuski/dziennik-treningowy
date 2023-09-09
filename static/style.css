@@ -1,0 +1,38 @@
+body, html{
+    padding:0;
+    margin:0;   
+    background-color: rgb(119, 119, 119);
+    color: white;
+}
+
+#menu_block{
+    background-color: rgb(37, 37, 37);
+    max-height: 200px;
+    height:fit-content;
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+
+#menu_list{
+    margin: 0;
+    padding: 0;
+    width: fit-content;
+    height: 30px;
+    margin: auto;
+}
+
+ul#menu_list > li.menu_item{
+    display: inline;
+    width: fit-content;
+}
+a{
+    color: white;
+    text-decoration: none;
+    min-width: 60px;
+    border: 1px rgb(255, 255, 255) solid;
+    border-radius: 15px 10px 15px 10px;
+    padding: 10px;
+}
+li.menu_item > a:hover{
+    background-color: rgba(240, 248, 255, 0.1);
+}
