@@ -12,15 +12,15 @@
     <div id="menu_block">
         <ul class="menu_list">
             <li class="menu_item"><a href=".">&#127968;</a></li>
-            <li class="menu_item nc"><a href="#">dziennik</a></li>
-            <li class="menu_item nc"><a href="#">kalkulator proporcji</a></li>
+            <li class="menu_item nc"><a href="dictionary">dziennik</a></li>
+            <li class="menu_item nc"><a href="calculator">kalkulator proporcji</a></li>
         </ul>
         <ul class="menu_list settings">
             <li class="menu_item"><a href="settings">&#9881;</a></li>
         </ul>
     </div>
     <main>
-
+        {% block content %}{% endblock %}
     </main>
 </body>
 </html>
