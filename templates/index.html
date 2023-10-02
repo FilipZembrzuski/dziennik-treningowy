@@ -4,9 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dziennik terningowy</title>
+    <title>Dziennik treningowy</title>
     <link rel="stylesheet" href="../static/style.css">
     <link rel="stylesheet" href="../static/anim.css">
+    <script>
+        var set = 0;
+        function rotation(zmk){
+            object = document.getElementsByClassName("set")[0];
+            if(zmk == 0){
+                object.style.transform = 'rotate(90deg)';
+                object.style.color = 'red';
+                set = 1
+            }else{
+                object.style.transform = 'rotate(0deg)';
+                object.style.color = 'white';
+                set = 0
+            }
+        }
+    </script>
 </head>
 <body>
     <div id="menu_block">
@@ -16,11 +31,14 @@
             <li class="menu_item nc"><a href="calculator">kalkulator proporcji</a></li>
         </ul>
         <ul class="menu_list settings">
-            <li class="menu_item"><a href="settings">&#9881;</a></li>
+            <li class="menu_item set border" onclick="rotation(set)"><!--<a href="settings">-->AB &#9881;<!--</a>--></li>
         </ul>
     </div>
     <main>
         {% block content %}{% endblock %}
     </main>
+    <div id="footer">
+        @Copyright by Filip Zembrzuski
+    </div>
 </body>
 </html>

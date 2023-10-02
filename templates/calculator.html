@@ -1,1 +1,49 @@
 {% extends "index.html" %}
+
+{% block content %}
+    <h1>KALKULATOR PROPORCJI</h1>
+    <div id="proportion">
+        <p class="add">*wszystkie wartości podawane powinny być w cm</p>
+        <table class = "prop">
+            <tr>
+                <td>Obwód<br>pasa</td>
+                <td>Obwód<br>barków</td>
+                <td>Obwód<br>klatki</td>
+                <td>Obwód<br>ramienia</td>
+                <td>Obwód<br>łydki</td>
+                <td>Obwód<br>udo</td>
+                <td>Obwód<br>przedramienia</td>
+                <td>Obwód<br>szyi</td>
+                <td>Obwód<br>nadgarstka</td>
+                <td>Obwód<br>kolana</td>
+                <td>Wzrost</td>
+            </tr>
+            <form action="addProportions" method="post">
+                <tr>
+                    <td><input type="number" name="crimson" id=""></td>
+                    <td><input type="number" name="shoulder" id=""></td>
+                    <td><input type="number" name="chest" id=""></td>
+                    <td><input type="number" name="arm" id=""></td>
+                    <td><input type="number" name="calf" id=""></td>
+                    <td><input type="number" name="thigh" id=""></td>
+                    <td><input type="number" name="forearm" id=""></td>
+                    <td><input type="number" name="neck" id=""></td>
+                    <td><input type="number" name="elbow" id=""></td>
+                    <td><input type="number" name="knee" id=""></td>
+                    <td><input type="number" name="height" id=""></td>
+                    <div class="add">
+                        <input type="submit" value="zapisz">
+                    </div>
+                </tr>
+                <tr>
+                {% for a in w %}
+                    <td>{{a}}</td>
+                {% endfor %}
+                </tr>
+            </form>
+        </table>
+    </div>
+    <div id="graph">
+
+    </div>
+{% endblock %}
