@@ -3,9 +3,10 @@
 {% block content %}
     <h1>KALKULATOR PROPORCJI</h1>
     <div id="proportion">
-        <p class="add">*wszystkie wartości podawane powinny być w cm</p>
-        <table class = "prop">
+        <p class="ps">*wszystkie wartości podawane powinny być w cm</p>
+        <table id = "prop">
             <tr>
+                <td>Data</td>
                 <td>Obwód<br>pasa</td>
                 <td>Obwód<br>barków</td>
                 <td>Obwód<br>klatki</td>
@@ -17,33 +18,54 @@
                 <td>Obwód<br>nadgarstka</td>
                 <td>Obwód<br>kolana</td>
                 <td>Wzrost</td>
+                <td class = "add"></td>
             </tr>
             <form action="addProportions" method="post">
                 <tr>
-                    <td><input type="number" name="crimson" id=""></td>
-                    <td><input type="number" name="shoulder" id=""></td>
-                    <td><input type="number" name="chest" id=""></td>
-                    <td><input type="number" name="arm" id=""></td>
-                    <td><input type="number" name="calf" id=""></td>
-                    <td><input type="number" name="thigh" id=""></td>
-                    <td><input type="number" name="forearm" id=""></td>
-                    <td><input type="number" name="neck" id=""></td>
-                    <td><input type="number" name="elbow" id=""></td>
-                    <td><input type="number" name="knee" id=""></td>
-                    <td><input type="number" name="height" id=""></td>
-                    <div class="add">
+                    <td><input type="date" name="date" value="{{datetime}}" required></td>
+                    <td><input type="number" name="crimson" step="0.5" value="1" required></td>
+                    <td><input type="number" name="shoulder" step="0.5" value="1" required></td>
+                    <td><input type="number" name="chest" step="0.5" value="1" required></td>
+                    <td><input type="number" name="arm" step="0.5" value="1" required></td>
+                    <td><input type="number" name="calf" step="0.5" value="1" required></td>
+                    <td><input type="number" name="thigh" step="0.5" value="1" required></td>
+                    <td><input type="number" name="forearm" step="0.5" value="1" required></td>
+                    <td><input type="number" name="neck" step="0.5" value="1" required></td>
+                    <td><input type="number" name="elbow" step="0.5" value="1" required></td>
+                    <td><input type="number" name="knee" step="0.5" value="1" required></td>
+                    <td><input type="number" name="height" step="0.5" value="1" required></td>
+                    <td class="add">
                         <input type="submit" value="zapisz">
-                    </div>
+                    </td>
                 </tr>
-                <tr>
-                {% for a in w %}
-                    <td>{{a}}</td>
+            </form>    
+                {% for p in prop %}
+                        <tr id="{{p.id}}">
+                            {% for key, value in p.items() %}
+                                {% if loop.index > 1 %}
+                                    <td>
+                                        {% if loop.index == 2 %}
+                                            {{value}}
+                                        {% else %}
+                                            {{value}}cm
+                                        {% endif %}
+                                    </td>
+                                {% endif %}
+                            {% endfor %}
+                            <td>
+                                <a href="javascript:edit({{p.id}})">&#128394;</a>
+                            </td>
+                        </tr>
                 {% endfor %}
-                </tr>
-            </form>
         </table>
+
+        <br><br><br>
+        
     </div>
     <div id="graph">
 
+    </div>
+    <div class="tableprop">
+            hsifhsrhgihi
     </div>
 {% endblock %}

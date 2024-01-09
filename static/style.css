@@ -48,8 +48,9 @@ a{
     font-family: Arial, Helvetica, sans-serif;
 }
 
-li.set{
-    transform: rotate(0);
+li > a.set{
+    display:block;
+    transform: rotate(-90deg);
     background-color: blue;
 }
 
@@ -66,6 +67,11 @@ main{
 h1{
     color: rgb(37, 37, 37);
 }
+
+.add{
+    padding-left:10px;
+    border: 0;
+}
 @media screen and (min-width: 1180px){
     
     #proportion{
@@ -74,15 +80,14 @@ h1{
         min-height: 30px;
     }
 
-    p.add{
+    p.ps{
         text-align: left;
         margin-left: 30px;
     }
-    table.prop{
+    table#prop{
         width:90%;
         margin:auto;
         margin-left: 30px;
-        border: 1px black solid;
         border-collapse: collapse;
     }
     td{
@@ -108,14 +113,13 @@ h1{
         min-height: 30px;
     }
 
-    p.add{
+    p.ps{
         text-align: left;
         margin-left: 30px;
     }
-    table.prop{
+    table#prop{
         margin:auto;
         margin-left: 30px;
-        border: 1px black solid;
         border-collapse: collapse;
     }
     td{
@@ -141,10 +145,10 @@ h1{
 }
 
 @media screen and (max-width: 1050px){
-    p.add{
+    p.ps{
         margin-left: 1px;
     }
-    table.prop{
+    table#prop{
         margin-left:1px;
     }
     td{

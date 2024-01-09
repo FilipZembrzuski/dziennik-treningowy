@@ -7,20 +7,103 @@
     <title>Dziennik treningowy</title>
     <link rel="stylesheet" href="../static/style.css">
     <link rel="stylesheet" href="../static/anim.css">
+    <link rel="stylesheet" href="../static/table.css">
     <script>
         var set = 0;
         function rotation(zmk){
-            object = document.getElementsByClassName("set")[0];
+            object = document.getElementById("set");
             if(zmk == 0){
                 object.style.transform = 'rotate(90deg)';
                 object.style.color = 'red';
-                set = 1
+                set = 1;
             }else{
-                object.style.transform = 'rotate(0deg)';
+                object.style.transform = 'rotate(-90deg)';
                 object.style.color = 'white';
-                set = 0
+                set = 0;
             }
         }
+        function noedit(id){
+            let table = document.getElementById("prop");
+            let tr = table.querySelectorAll("tr");
+            let td;
+            let con = "";
+            for(let i = 2; i<tr.length; i++){
+                a = tr[i];
+                if(a.id != id){
+                    a.class = "";
+                    td = a.querySelectorAll("td");
+                    for(let j = 0; j<td.length-1; j++){
+                        con = td[j].innerHTML;
+                        if(con.includes("<")){
+                            con = con.slice(0, con.lastIndexOf('"'));
+                            con = con.slice(con.lastIndexOf('"')+1);
+                            if(! con.includes("-")){
+                                con += "cm";
+                            }
+                            td[j].innerHTML = con;
+                        }else{
+                            continue;
+                        }
+                    }
+                    let j = td.length;
+                    let b = td[j-1];
+                    con = "<a href='javascript:edit(" + a.id + ")'>&#128394;</a>";
+                    b.innerHTML = con;     
+                }
+            }
+        }
+
+        function edit(id){
+            //updateProportions
+            let tr = document.getElementById(id);
+            let td = tr.querySelectorAll("td");
+            noedit(id);
+            let edycja = "";
+            let val = "";
+            for(let i=0; i<td.length-1; i++){
+                let a = td[i];
+                let val = a.innerHTML
+                if(val.includes("-")){
+                    edycja = `<input type="date" value=${val}>`;
+                }else{
+                    edycja = `<input type="number" value=${val.replace("cm", "")}>`;
+                }
+                a.innerHTML = edycja;               
+            }
+
+            let i = td.length;
+            let a = td[i-1];
+            val = `<a href='javascript:update(${id})'>&#10004;</a><a href='javascript:noedit(0)'>&#10060;</a>`;
+            a.innerHTML = val;
+        }
+
+        function update(id){
+            let tr = document.getElementById(id);
+            let td = tr.querySelectorAll("td");
+            let url = "updateProportions?";
+            let b = [];
+            let input;
+            for(let i=0; i<td.length-1; i++){
+                let a = td[i]; 
+                if(i==0){
+                    input = a.querySelector("input")
+                    url += `${i}=${input.value}`;
+                }else{
+                    input = a.querySelector("input")
+                    url += `&${i}=${input.value}`;
+                }
+                b.push(input.value)
+            }
+            url = `updateProportions?id=${id}&tab=${b}`;
+            console.log(url)
+            open(url, '_self');
+        }
+
+        var date = new Date();
+        var y = date.getFullYear();
+        var m = date.getMonth() + 1;
+        var d = date.getDate();
+        var data = y + "-" + m + "-" + d;
     </script>
 </head>
 <body>
@@ -31,7 +114,7 @@
             <li class="menu_item nc"><a href="calculator">kalkulator proporcji</a></li>
         </ul>
         <ul class="menu_list settings">
-            <li class="menu_item set border" onclick="rotation(set)"><!--<a href="settings">-->AB &#9881;<!--</a>--></li>
+            <li class="menu_item border"><a href="javascript:rotation(set)" id="set">A</a></li>
         </ul>
     </div>
     <main>
